@@ -1,6 +1,6 @@
 @props([
     'label',
-    'name' => 'toggle_' . rand(0, 1000),
+    'name' => 'toggle_' . uniqid(),
     'vertical' => false,
 ])
 
