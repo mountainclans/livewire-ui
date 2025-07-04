@@ -2,6 +2,10 @@
 
 All notable changes to `livewire-ui` will be documented in this file.
 
+## 1.1.1 - 2025-07-04
+
+Add form component
+
 ## 1.0.1 - 2025-07-04
 
 Update components
