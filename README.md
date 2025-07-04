@@ -63,7 +63,7 @@ php artisan vendor:publish --tag="livewire-ui-views"
 ### Multiselect
 
 ```bladehtml
-<x-ui.multiselect wire:model="$modelArray"
+<x-ui.multiselect wire:model="modelArray"
                   wire:key="w"
                   name="attributeValues.{{ $attribute->id }}"
                   :label="__('Label')"
@@ -74,7 +74,7 @@ php artisan vendor:publish --tag="livewire-ui-views"
 
 `wire:key` опционален.
 
-В примере используется запись значений в массив `attributeValues`.
+В примере используется запись значений в массив `modelArray`.
 
 ### Radio
 ```bladehtml
