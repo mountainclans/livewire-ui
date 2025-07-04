@@ -5,7 +5,7 @@
 ])
 
 @php
-	$localKey = $attributes->get('wire:model') . uniqid();
+	$localKey = $attributes->get('wire:model') . rand(1, 1000);
     $wireModel = $attributes->wire('model');
     if (str_contains($wireModel, '.')) {
         $explodedWire = explode('.', $wireModel);
@@ -33,11 +33,11 @@
 	     @keydown.space.prevent="isOpen = !isOpen"
 	>
 		<div>
-			@empty ($selected)
+			@empty($selected)
 				<div class="my-1 text-sm px-1 py-1 dark:text-white select-none">{{ $placeholder }}</div>
 			@else
-				@foreach ($values as $key => $value)
-					@if (in_array($key, $selected))
+				@foreach($values as $key => $value)
+					@if(in_array($key, $selected))
 						<div class="inline-block my-1 text-sm px-2 py-1 rounded bg-gray-400 text-white">
 							{{ $value }}
 						</div>
