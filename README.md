@@ -121,7 +121,61 @@ php artisan vendor:publish --tag="livewire-ui-views"
 
 Атрибуты `size`, `title` опциональны.
 
-## TODO: confirm delete, form-tabs
+### Confirm delete
+Модальное окно с запросом подтверждения выполнения действия. Чаще всего используется при удалении записей.
+
+```bladehtml
+<x-ui.confirm-delete id="brandModalDelete"
+                     control-attribute="isDeleteModalOpen"
+                     submit-action="deleteBrand('{{ $brandId }}')"
+                     :question-text="__('Are you sure you want to delete this brand?')"
+                     :submitText="__('Yes, I'm sure')"
+                     :cancelText="__('No, cancel')"
+                     
+/>
+```
+
+Для использования в родительском компоненте нужно задать bool-атрибут и передать его имя в prop `control-attribute`. В момент необходимости показа данного окна установить этот контрольный атрибут в true.
+
+
+### Form tabs
+
+`DEPRECATED`, вместо этого компонента используйте [пакет от Spatie](https://github.com/spatie/laravel-livewire-wizard).
+
+Добавляет визуальные "вкладки", среди которых представлены нужные компоненты. Текущая страница будет подсвечена.
+
+**Внимание! Данный компонент не занимается менеджментом переходов между вкладками.**
+
+```bladehtml
+<x-ui.form-tabs :model-id="$modelId" :tabs="$tabs" />
+```
+
+В родительском компоненте:
+
+```php
+public string $modelId = '';
+public array $tabs = [];
+
+public function mount(?string $modelId = null) {
+    $this->modelId = $modelId;
+    $this->tabs = [
+            [
+                'title' => __('General'),
+                'title_long_before' => '',
+                'title_long_after' => '',
+                'match_routes' => ['purchases.create', 'purchases.edit'],
+                'route' => $modelId ? route('purchases.edit', $modelId) : null,
+            ],
+            [
+                'title' => __('Items'),
+                'title_long_before' => __(''),
+                'title_long_after' => __(' & Publish'),
+                'match_routes' => ['purchases.items'],
+                'route' => $modelId ? route('purchases.items', $modelId) : null,
+            ],
+        ];
+}
+```
 
 ## Авторы
 
