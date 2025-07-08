@@ -8,6 +8,15 @@
 composer require mountainclans/livewire-ui
 ```
 
+_Обратите внимание, что для корректной стилизации в вашем проекте должен использоваться TailwindCSS._
+
+Добавьте в `tailwind.config.js` в секцию `content`:
+
+```js
+'./vendor/mountainclans/livewire-ui/resources/views/**/*.blade.php'
+```
+
+--- 
 Опционально, вы можете опубликовать `views` для их переопределения:
 
 ```bash
