@@ -38,7 +38,7 @@ php artisan vendor:publish --tag="livewire-ui-views"
 **Использование представленных ниже компонентов НЕ требует обязательного использования компонента `<form>`!**
 
 ### Input
-**Компонент может использоваться в `<translatable>`.**
+**Компонент может использоваться в качестве [\<translatable>](https://github.com/mountainclans/livewire-translatable) поля.**
 
 ```bladehtml
 <x-ui.input wire:model="firstName"
