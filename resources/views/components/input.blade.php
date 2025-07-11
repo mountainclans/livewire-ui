@@ -35,7 +35,7 @@
         </div>
     @endif
 
-    <div class="flex w-full items-center flex-wrap">
+    <div class="flex w-full items-center">
 
         @if ($prefix)
             <span class="mr-1 text-md">
