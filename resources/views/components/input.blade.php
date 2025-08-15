@@ -38,9 +38,7 @@
     <div class="w-full">
         <div class="flex items-center">
             @if ($prefix)
-                <span class="mr-1 text-md">
-                {{ $prefix }}
-            </span>
+                <span class="mr-1 text-md text-gray-700 dark:text-gray-400">{{ $prefix }}</span>
             @endif
 
             @if ($type === 'textarea')
