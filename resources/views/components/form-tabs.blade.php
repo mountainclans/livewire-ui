@@ -62,7 +62,7 @@
                                 clip-rule="evenodd"/>
                         </svg>
                     @else
-                        <svg class="w-3.5 h-3.5 sm:w-5 sm:h-5 me-2.5 text-gray-800 dark:text-white"
+                        <svg class="w-3.5 h-3.5 sm:w-5 sm:h-5 me-2.5"
                              aria-hidden="true"
                              xmlns="http://www.w3.org/2000/svg"
                              width="24"
