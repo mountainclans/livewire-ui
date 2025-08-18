@@ -1,3 +1,7 @@
+@props([
+    'indicateLoading' => true,
+])
+
 <div class="relative">
     <form {{ $attributes }}>
         {{ $slot }}
@@ -10,7 +14,10 @@
     </form>
 
     <div wire:loading.class="!block"
-         class="hidden absolute inset-0 bg-white bg-opacity-50"
+         @class([
+            'hidden absolute inset-0' => true,
+            'bg-white bg-opacity-50' => $indicateLoading,
+         ])
     ></div>
 </div>
 

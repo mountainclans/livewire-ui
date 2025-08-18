@@ -31,6 +31,7 @@ php artisan vendor:publish --tag="livewire-ui-views"
            id="login"
            wire:recaptcha
            class="grid sm:grid-cols-2 gap-4 text-sm py-4"
+           :indicate-loading="false"
 >
 Контент формы
 </x-ui.form>
@@ -40,7 +41,9 @@ php artisan vendor:publish --tag="livewire-ui-views"
 
 `id` рекомендуется.
 
-Атрибуты `wire:recaptcha`, `class` опциональны.
+Атрибуты `wire:recaptcha`, `class`, `indicate-loading` опциональны.
+
+Если установлен `:indicate-loading="false"`, форма не будет "мигать" при ajax-запросах.
 
 Форма поддерживает обработку ошибок при использовании пакета [Livewire Recaptcha](https://github.com/DutchCodingCompany/livewire-recaptcha?ysclid=mcoxk9j1wk293939835). 
 
