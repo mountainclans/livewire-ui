@@ -8,9 +8,8 @@
     $isBeforeCurrentRoute = true;
 @endphp
 
-
 <ol wire:ignore
-    class="flex justify-center items-center w-full text-sm font-medium text-center text-gray-500 dark:text-gray-400 sm:text-base mb-7"
+    class="flex items-center w-full text-sm font-medium text-center text-gray-500 dark:text-gray-400 sm:text-base mb-7 overflow-x-auto min-w-full w-auto justify-start xl:justify-center pb-5"
 >
     @foreach ($tabs as $tab)
         @php
