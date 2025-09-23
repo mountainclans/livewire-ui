@@ -18,6 +18,7 @@ class LivewireUiServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         Blade::component('livewire-ui::components/confirm-delete', 'ui.confirm-delete');
+        Blade::component('livewire-ui::components/form', 'ui.form');
         Blade::component('livewire-ui::components/form-tabs', 'ui.form-tabs');
         Blade::component('livewire-ui::components/input', 'ui.input');
         Blade::component('livewire-ui::components/modal', 'ui.modal');
