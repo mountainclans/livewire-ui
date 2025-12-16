@@ -88,6 +88,8 @@ php artisan vendor:publish --tag="livewire-ui-views"
 
 В примере используется запись значений в массив `modelArray`.
 
+Компонент автоматически синхронизируется с бэкендом при клике снаружи. **Не используйте `wire:model.live`.**
+
 ### Radio
 ```bladehtml
 <x-ui.radio wire:model.live.debounce="statusFilter"
