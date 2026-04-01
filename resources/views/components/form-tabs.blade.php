@@ -80,15 +80,17 @@
                     @endif
 
                     @if(!empty($tab['title_long_before']))
-                        <span
-                            class="hidden md:inline-flex md:mx-2 w-auto flex-shrink-0">{{ $tab['title_long_before'] }}</span>
+                        <span class="hidden md:inline-flex md:mx-1 w-auto flex-shrink-0">
+                            {{ $tab['title_long_before'] }}
+                        </span>
                     @endif
 
                     <span class="w-auto flex-shrink-0">{{ $tab['title'] }}</span>
 
                     @if(!empty($tab['title_long_after']))
-                        <span
-                            class="hidden md:inline-flex md:mx-2 w-auto flex-shrink-0">{{ $tab['title_long_after'] }}</span>
+                        <span class="hidden md:inline-flex md:mx-1 w-auto flex-shrink-0">
+                            {{ $tab['title_long_after'] }}
+                        </span>
                     @endif
             </span>
             </a>
