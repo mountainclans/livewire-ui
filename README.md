@@ -33,7 +33,7 @@ php artisan vendor:publish --tag="livewire-ui-views"
            class="grid sm:grid-cols-2 gap-4 text-sm py-4"
            :indicate-loading="false"
 >
-Контент формы
+    Контент формы
 </x-ui.form>
 ```
 
@@ -45,7 +45,7 @@ php artisan vendor:publish --tag="livewire-ui-views"
 
 Если установлен `:indicate-loading="false"`, форма не будет "мигать" при ajax-запросах.
 
-Форма поддерживает обработку ошибок при использовании пакета [Livewire Recaptcha](https://github.com/DutchCodingCompany/livewire-recaptcha?ysclid=mcoxk9j1wk293939835). 
+Форма поддерживает обработку ошибок при использовании пакета [Livewire Recaptcha](https://github.com/DutchCodingCompany/livewire-recaptcha?ysclid=mcoxk9j1wk293939835).
 
 **Использование представленных ниже компонентов НЕ требует обязательного использования компонента `<form>`!**
 
@@ -106,6 +106,7 @@ php artisan vendor:publish --tag="livewire-ui-views"
              id="allowBackorder"
              name="allowBackorder"
              :vertical="true"
+             :darker="true"
              :label="__('Allow backorder?')"
 />
 ```
@@ -113,6 +114,8 @@ php artisan vendor:publish --tag="livewire-ui-views"
 Атрибуты `wire:model`, `label` обязательны.
 
 Атрибут `vertical` со значением `true` меняет внешний вид компонента, располагая лейбл и переключатель вертикально.
+
+Атрибут `darker` со значением `true` делает фон переключателя на один шаг темнее — удобно использовать, когда компонент располагается на сером фоне (`bg-gray-50` / `dark:bg-gray-700`), чтобы он не сливался с подложкой.
 
 ### Submit Button
 Кнопка визуализирует процесс отправки формы.
