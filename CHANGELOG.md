@@ -2,6 +2,10 @@
 
 All notable changes to `livewire-ui` will be documented in this file.
 
+## 1.5.0 - 2026-06-22
+
+**Full Changelog**: https://github.com/mountainclans/livewire-ui/compare/1.4.0...1.5.0
+
 ## 1.4.0 - 2026-04-06
 
 Toggle: add darker mode
