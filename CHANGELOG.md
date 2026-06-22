@@ -2,6 +2,10 @@
 
 All notable changes to `livewire-ui` will be documented in this file.
 
+## 1.4.0 - 2026-04-06
+
+Toggle: add darker mode
+
 ## 1.3.0 - 2025-09-23
 
 ability to disable default classes
