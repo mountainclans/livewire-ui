@@ -16,7 +16,7 @@
     <div wire:loading.class="!block"
          @class([
             'hidden absolute inset-0' => true,
-            'bg-white bg-opacity-50' => $indicateLoading,
+            'bg-white/50 dark:bg-gray-900/50' => $indicateLoading,
          ])
     ></div>
 </div>
