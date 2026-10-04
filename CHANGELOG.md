@@ -2,6 +2,11 @@
 
 All notable changes to `livewire-ui` will be documented in this file.
 
+## 1.7.0 - 2026-10-04
+
+- Fix: the loading overlay of `x-ui.form` is translucent again on Tailwind 4. `bg-opacity-50` no longer exists there, so the overlay was solid white and hid the whole form during every Livewire request.
+- `x-ui.multiselect` sends a request on close only when the choice has changed. Opening and closing the list without changes no longer refreshes the component.
+
 ## 1.6.0 - 2026-09-29
 
 Support Livewire 4; replace utilities removed in Tailwind 4
