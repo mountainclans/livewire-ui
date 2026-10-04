@@ -102,7 +102,7 @@
         <ul class="w-100 max-w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white max-h-[300px] overflow-y-auto">
 
             @foreach ($values as $key => $value)
-                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+                <li class="w-full border-b border-gray-200 rounded-t-lg hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-800">
                     <div class="flex items-center ps-3">
                         <input id="{{ $localKey . $key }}"
                                type="checkbox"
