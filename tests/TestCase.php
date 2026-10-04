@@ -18,6 +18,12 @@ class TestCase extends Orchestra
         $this->app['view']->share('errors', new ViewErrorBag);
     }
 
+    protected function getEnvironmentSetUp($app): void
+    {
+        // Livewire::test шифрует снимок компонента, без ключа он падает.
+        $app['config']->set('app.key', 'base64:' . base64_encode(random_bytes(32)));
+    }
+
     protected function getPackageProviders($app): array
     {
         return [

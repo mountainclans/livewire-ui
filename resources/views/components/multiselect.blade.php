@@ -2,6 +2,9 @@
     'label',
     'values',
     'placeholder' => __('Please, select'),
+    'searchable' => false,
+    'searchPlaceholder' => __('Search'),
+    'noResults' => __('No results found'),
 ])
 
 @php
@@ -20,12 +23,24 @@
 <div x-data="{
     isOpen: false,
     openedWith: '',
+    search: '',
+    labels: {{ Js::from(array_values($values)) }},
+    matches(label) {
+        const query = this.search.trim().toLowerCase();
+
+        return query === '' || String(label).toLowerCase().includes(query);
+    },
+    hasMatches() {
+        return this.labels.some(label => this.matches(label));
+    },
     checked() {
         return [...$root.querySelectorAll('input[type=checkbox]:checked')].map(input => input.value).sort().join(',');
     },
     open() {
         this.openedWith = this.checked();
+        this.search = '';
         this.isOpen = true;
+        $nextTick(() => $refs.search?.focus());
     },
     close() {
         if (!this.isOpen) {
@@ -99,10 +114,30 @@
          class="absolute z-20 mt-2 w-full"
          @click.outside="close()"
     >
-        <ul class="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white max-h-[300px] overflow-y-auto">
+        @if ($searchable)
+            <div class="p-2 bg-gray-50 border border-b-0 border-gray-200 rounded-t-lg dark:bg-gray-700 dark:border-gray-600">
+                <input type="text"
+                       x-ref="search"
+                       x-model="search"
+                       @keydown.escape.prevent="close()"
+                       placeholder="{{ $searchPlaceholder }}"
+                       autocomplete="off"
+                       class="w-full p-2 text-sm text-gray-900 bg-white border border-gray-300 rounded dark:bg-gray-600 dark:border-gray-500 dark:text-white dark:placeholder-gray-400"
+                >
+            </div>
+        @endif
+
+        <ul @class([
+                'w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white max-h-[300px] overflow-y-auto',
+                'rounded-lg' => ! $searchable,
+                'rounded-b-lg' => $searchable,
+            ])
+        >
 
             @foreach ($values as $key => $value)
-                <li class="w-full border-b border-gray-200 rounded-t-lg hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-800">
+                <li x-show="matches({{ Js::from($value) }})"
+                    class="w-full border-b border-gray-200 rounded-t-lg hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-800"
+                >
                     <div class="flex items-center ps-3">
                         <input id="{{ $localKey . $key }}"
                                type="checkbox"
@@ -117,6 +152,12 @@
                     </div>
                 </li>
             @endforeach
+
+            @if ($searchable)
+                <li x-show="!hasMatches()"
+                    class="px-3 py-3 text-gray-500 dark:text-gray-400 italic select-none"
+                >{{ $noResults }}</li>
+            @endif
 
         </ul>
     </div>

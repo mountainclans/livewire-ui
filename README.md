@@ -90,6 +90,22 @@ php artisan vendor:publish --tag="livewire-ui-views"
 
 Компонент автоматически синхронизируется с бэкендом при клике снаружи. **Не используйте `wire:model.live`.**
 
+Выбор уходит на сервер при закрытии списка и только если он изменился.
+
+Атрибут `searchable` добавляет над вариантами поле поиска: оно сужает список по подписи, без учёта регистра. По умолчанию поиска нет. Тексты поля и пустого результата задаются атрибутами `search-placeholder` и `no-results`:
+
+```bladehtml
+<x-ui.multiselect wire:model="tags"
+                  :label="__('Tags')"
+                  :values="$tags"
+                  searchable
+                  :search-placeholder="__('Search')"
+                  :no-results="__('No results found')"
+/>
+```
+
+Список вариантов по ширине равен полю выбора.
+
 ### Radio
 ```bladehtml
 <x-ui.radio wire:model.live.debounce="statusFilter"
