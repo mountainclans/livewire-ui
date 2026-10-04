@@ -15,8 +15,32 @@
     }
 @endphp
 
+{{-- The checkboxes are bound with deferred wire:model, so the choice reaches the server only on close.
+     Closing without changes skips the request. --}}
 <div x-data="{
-    isOpen: false
+    isOpen: false,
+    openedWith: '',
+    checked() {
+        return [...$root.querySelectorAll('input[type=checkbox]:checked')].map(input => input.value).sort().join(',');
+    },
+    open() {
+        this.openedWith = this.checked();
+        this.isOpen = true;
+    },
+    close() {
+        if (!this.isOpen) {
+            return;
+        }
+
+        this.isOpen = false;
+
+        if (this.checked() !== this.openedWith) {
+            $wire.$refresh();
+        }
+    },
+    toggle() {
+        this.isOpen ? this.close() : this.open();
+    },
 }"
      x-cloak
      class="relative"
@@ -24,13 +48,13 @@
 >
     <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $label }}</p>
 
-    <div @click="isOpen = !isOpen"
+    <div @click="toggle()"
          class="py-1 px-2 rounded-lg cursor-pointer bg-gray-50 border border-gray-300 hover:ring-primary-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 relative focus:outline-none focus:ring-1 focus:ring-blue-500 imitate-select"
          :class="{
             '!ring-1 !ring-blue-500': isOpen
          }"
          tabindex="0"
-         @keydown.space.prevent="isOpen = !isOpen"
+         @keydown.space.prevent="toggle()"
     >
         <div>
             @empty($selected)
@@ -73,7 +97,7 @@
 
     <div x-show="isOpen"
          class="absolute z-20 mt-2"
-         @click.outside="isOpen = false; $wire.$refresh()"
+         @click.outside="close()"
     >
         <ul class="w-100 max-w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white max-h-[300px] overflow-y-auto">
 
