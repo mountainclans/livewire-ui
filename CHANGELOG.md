@@ -2,6 +2,12 @@
 
 All notable changes to `livewire-ui` will be documented in this file.
 
+## 1.8.0 - 2026-10-04
+
+- `x-ui.multiselect`: optional search. The `searchable` attribute adds a field that narrows the options by label, case-insensitively. Off by default. Texts come from the `search-placeholder` and `no-results` attributes.
+- `x-ui.multiselect`: the option list is as wide as the field instead of a fixed 25rem.
+- `x-ui.multiselect`: options are highlighted on hover.
+
 ## 1.7.0 - 2026-10-04
 
 - Fix: the loading overlay of `x-ui.form` is translucent again on Tailwind 4. `bg-opacity-50` no longer exists there, so the overlay was solid white and hid the whole form during every Livewire request.
