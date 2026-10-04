@@ -3,12 +3,12 @@
 use Illuminate\Support\Facades\Blade;
 use MountainClans\LivewireUi\LivewireUiServiceProvider;
 
-it('boots the service provider', function () {
+test('сервис-провайдер пакета загружается', function () {
     expect(app()->getLoadedProviders())
         ->toHaveKey(LivewireUiServiceProvider::class);
 });
 
-it('renders the x-ui.input component', function () {
+test('компонент x-ui.input выводит подпись и поле', function () {
     $html = Blade::render('<x-ui.input label="Email" name="email" />');
 
     expect($html)
@@ -17,7 +17,7 @@ it('renders the x-ui.input component', function () {
         ->toContain('name="email"');
 });
 
-it('renders the x-ui.submit-button component', function () {
+test('компонент x-ui.submit-button выводит кнопку', function () {
     $html = Blade::render('<x-ui.submit-button />');
 
     expect($html)->toContain('<button');
